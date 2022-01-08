@@ -3,50 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>연습문제 1</title>
-	<style>
-		ul{
-			list-style: none;
-		}
-		li {
-			font-size:20px; 
-			line-height: 35px;
-		}
-		.check {			
-			color:#ccc;
-			font-size:20px;
-			margin-right:25px;
-		}
-		.check:hover {
-			color:#222;
-		}
-	</style>
+	<title>연습문제 2</title>
 </head>
 <body>
-	<h1>할 일 목록</h1>
-	<ul>
-		<li><span class="check">&check;</span>할 일 1 </li>
-		<li><span class="check">&check;</span>할 일 2 </li>
-		<li><span class="check">&check;</span>할 일 3 </li>
-		<li><span class="check">&check;</span>할 일 4 </li>
-		<li><span class="check">&check;</span>할 일 5 </li>
-	</ul>
+	<form id="table">
+		<label><input id="row" type="text" style="width: 2em; text-align: center;">행</label>
+		<label><input id="column" type="text" style="width: 2em; text-align: center;">열</label>
+		<button onclick="run(); return false;">작성</button>
+	</form>
 	<script>
-		var checkList = document.getElementsByClassName("check");
-		var isChecked = [];
-		for(let i = 0; i < checkList.length; i++) {
-			isChecked[i] = false;
-			checkList[i].addEventListener("click", function(){
-				if(isChecked[i]) {
-					this.parentNode.style.color = "#000";
-					this.parentNode.style.textDecoration = "none";
-					isChecked[i] = false;
-				} else {
-					this.parentNode.style.color = "#ccc";
-					this.parentNode.style.textDecoration = "line-through";
-					isChecked[i] = true;
+		function run() {
+			var row = document.getElementById("row").value;
+			var column = document.getElementById("column").value;
+			var table = document.createElement("table");
+			var tableStyle = document.createAttribute("style");
+			tableStyle.value = "border: #000 solid 1px; border-collapse: collapse; width: 300px; margin-top: 10px;";
+			table.setAttributeNode(tableStyle);
+			for(let i = 0; i < row; i++) {
+				var tr = document.createElement("tr");
+				for(let j = 0; j < column; j++) {
+					var td = document.createElement("td");
+					var dataStyle = document.createAttribute("style");
+					dataStyle.value = "border: #000 solid 1px; border-collapse: collapse; padding: 10px;";
+					td.setAttributeNode(dataStyle);
+					var text = document.createTextNode(i + ", " + j);
+					td.appendChild(text);
+					tr.appendChild(td);
 				}
-			});
+				table.appendChild(tr);
+			}
+			document.querySelector("body").appendChild(table);
 		}
 	</script>
 </body>
