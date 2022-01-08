@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>웹스터디 테스트</title>
+	<link rel="stylesheet" href="Stylesheets/style.css">
 </head>
 <body>
 	<form id="table">
@@ -16,16 +17,10 @@
 			var row = document.getElementById("row").value;
 			var column = document.getElementById("column").value;
 			var table = document.createElement("table");
-			var tableStyle = document.createAttribute("style");
-			tableStyle.value = "border: #000 solid 1px; border-collapse: collapse; width: 300px; margin-top: 10px;";
-			table.setAttributeNode(tableStyle);
 			for(let i = 0; i < row; i++) {
 				var tr = document.createElement("tr");
 				for(let j = 0; j < column; j++) {
 					var td = document.createElement("td");
-					var dataStyle = document.createAttribute("style");
-					dataStyle.value = "border: #000 solid 1px; border-collapse: collapse; padding: 10px;";
-					td.setAttributeNode(dataStyle);
 					var text = document.createTextNode(i + ", " + j);
 					td.appendChild(text);
 					tr.appendChild(td);
