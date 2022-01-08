@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>웹스터디 테스트</title>
-	<link rel="stylesheet" href="Stylesheets/style.css" type="text/css">
+	<link rel="stylesheet" href="Stylesheets/style.css">
 </head>
 <body>
 	<form id="table">
@@ -12,23 +12,6 @@
 		<label><input id="column" type="text" style="width: 2em; text-align: center;">열</label>
 		<button onclick="run(); return false;">작성</button>
 	</form>
-	<script>
-		function run() {
-			var row = document.getElementById("row").value;
-			var column = document.getElementById("column").value;
-			var table = document.createElement("table");
-			for(let i = 0; i < row; i++) {
-				var tr = document.createElement("tr");
-				for(let j = 0; j < column; j++) {
-					var td = document.createElement("td");
-					var text = document.createTextNode(i + ", " + j);
-					td.appendChild(text);
-					tr.appendChild(td);
-				}
-				table.appendChild(tr);
-			}
-			document.querySelector("body").appendChild(table);
-		}
-	</script>
+	<script src="Scripts/test.js"></script>
 </body>
 </html>
